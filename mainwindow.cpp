@@ -27,3 +27,28 @@ void MainWindow::on_actionLinkedIn_triggered()
     QDesktopServices::openUrl(QUrl(link));
 }
 
+
+void MainWindow::on_actionGitHub_triggered()
+{
+    QString link = "https://github.com/M-Byte480/CS4076-Project/tree/main";
+    QDesktopServices::openUrl(QUrl(link));
+}
+
+
+void MainWindow::on_actionApplication_triggered()
+{
+
+}
+
+
+void MainWindow::on_searchButton_clicked()
+{
+
+}
+
+
+void MainWindow::on_dropDownBox_triggered(QAction *arg1)
+{
+
+}
+

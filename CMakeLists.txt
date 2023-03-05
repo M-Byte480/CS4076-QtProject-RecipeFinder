@@ -21,6 +21,10 @@ set(PROJECT_SOURCES
         mainwindow.ui
         ${TS_FILES}
         resources.qrc
+        popupwindow.h
+        popupwindow.cpp
+        popupwindow.ui
+        food.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

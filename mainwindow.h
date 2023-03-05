@@ -20,6 +20,14 @@ private slots:
 
     void on_actionLinkedIn_triggered();
 
+    void on_actionGitHub_triggered();
+
+    void on_actionApplication_triggered();
+
+    void on_searchButton_clicked();
+
+    void on_dropDownBox_triggered(QAction *arg1);
+
 private:
     Ui::MainWindow *ui;
 };
