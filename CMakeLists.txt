@@ -25,6 +25,12 @@ set(PROJECT_SOURCES
         popupwindow.cpp
         popupwindow.ui
         food.cpp
+        Requirements.txt
+        consumable.cpp
+        allergies.h
+        allergies.cpp
+        recipes.csv
+        filehandler.h filehandler.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

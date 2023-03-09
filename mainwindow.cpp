@@ -1,12 +1,20 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include <QDesktopServices>
+#include <stdlib.h>
+#include <string>
+#include <stdlib.h>
+
+using namespace std;
+
+QString text;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
-    ui->setupUi(this);
+    ui -> setupUi(this);
+    ui -> timeDisplay -> setAlignment(Qt::AlignCenter);
 }
 
 MainWindow::~MainWindow()
@@ -50,5 +58,31 @@ void MainWindow::on_searchButton_clicked()
 void MainWindow::on_dropDownBox_triggered(QAction *arg1)
 {
 
+}
+
+
+void MainWindow::on_timeSlider_sliderMoved(int position)
+{
+
+    if(position <= 0){
+        text = "None";
+    }else{
+
+    }
+}
+
+
+void MainWindow::on_timeSlider_valueChanged(int value)
+{
+    text = "None";
+    QString hour = QString::number(value / 60);
+    QString min = QString::number(value % 60);
+    QString time = hour + ":" + min;
+
+    text = time + " Hour";
+
+    if(value / 60 == 0 && value % 60 == 0) text = "No Preference";
+
+    ui -> timeDisplay -> setText(text);
 }
 

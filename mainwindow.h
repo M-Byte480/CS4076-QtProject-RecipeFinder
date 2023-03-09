@@ -28,6 +28,10 @@ private slots:
 
     void on_dropDownBox_triggered(QAction *arg1);
 
+    void on_timeSlider_sliderMoved(int position);
+
+    void on_timeSlider_valueChanged(int value);
+
 private:
     Ui::MainWindow *ui;
 };

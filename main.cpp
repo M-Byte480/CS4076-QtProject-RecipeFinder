@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-
+#include "filehandler.h"
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
@@ -7,6 +7,9 @@
 
 int main(int argc, char *argv[])
 {
+    fileHandler fl;
+    fl.readFile();
+
     QApplication a(argc, argv);
 
     QTranslator translator;
