@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "popupdialogue.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -22,17 +23,11 @@ private slots:
 
     void on_actionGitHub_triggered();
 
-    void on_actionApplication_triggered();
-
     void on_searchButton_clicked();
-
-    void on_dropDownBox_triggered(QAction *arg1);
 
     void on_timeSlider_sliderMoved(int position);
 
     void on_timeSlider_valueChanged(int value);
-
-    void on_dropDownBox_clicked();
 
 private:
     Ui::MainWindow *ui;

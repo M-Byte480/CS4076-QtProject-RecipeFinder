@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>580</width>
-    <height>390</height>
+    <width>540</width>
+    <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,29 +16,22 @@
   <widget class="QWidget" name="gridLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>50</x>
      <y>20</y>
      <width>181</width>
      <height>251</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="1">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Difficulty</string>
-      </property>
-     </widget>
-    </item>
+   <layout class="QGridLayout" name="levelSelector">
     <item row="4" column="1">
-     <widget class="QRadioButton" name="radioButton">
+     <widget class="QRadioButton" name="anyDifficulty">
       <property name="text">
        <string>Any</string>
       </property>
      </widget>
     </item>
     <item row="3" column="1">
-     <widget class="QRadioButton" name="radioButton_3">
+     <widget class="QRadioButton" name="hardDifficulty">
       <property name="text">
        <string>Hard</string>
       </property>
@@ -60,17 +53,110 @@
       </property>
      </spacer>
     </item>
+    <item row="1" column="1">
+     <widget class="QRadioButton" name="easyDifficulty">
+      <property name="text">
+       <string>Easy</string>
+      </property>
+     </widget>
+    </item>
     <item row="2" column="1">
-     <widget class="QRadioButton" name="radioButton_2">
+     <widget class="QRadioButton" name="mediumDifficulty">
       <property name="text">
        <string>Medium</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="1">
-     <widget class="QRadioButton" name="radioButton_4">
+    <item row="0" column="1">
+     <widget class="QLabel" name="difficultyLabel">
       <property name="text">
-       <string>Easy</string>
+       <string>Difficulty</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>20</y>
+     <width>211</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="allergySelector">
+    <item row="0" column="0" colspan="2">
+     <widget class="QLabel" name="allergyLabel">
+      <property name="text">
+       <string>Allergies</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QCheckBox" name="checkBox_4">
+      <property name="text">
+       <string>Fish</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QCheckBox" name="checkBox_6">
+      <property name="text">
+       <string>Wheat</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QCheckBox" name="checkBox_2">
+      <property name="text">
+       <string>Milk</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QCheckBox" name="checkBox">
+      <property name="text">
+       <string>Nuts</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>210</y>
+     <width>211</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="finishBox">
+    <item>
+     <widget class="QPushButton" name="applyButton">
+      <property name="text">
+       <string>Apply</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="horizontalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QPushButton" name="cancelButton">
+      <property name="text">
+       <string>Cancel</string>
       </property>
      </widget>
     </item>

@@ -21,9 +21,6 @@ set(PROJECT_SOURCES
         mainwindow.ui
         ${TS_FILES}
         resources.qrc
-        popupwindow.h
-        popupwindow.cpp
-        popupwindow.ui
         food.cpp
         Requirements.txt
         consumable.cpp
@@ -31,7 +28,6 @@ set(PROJECT_SOURCES
         allergies.cpp
         recipes.csv
         filehandler.h filehandler.cpp
-        popupdialogue.h popupdialogue.cpp popupdialogue.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

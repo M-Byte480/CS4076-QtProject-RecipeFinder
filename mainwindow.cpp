@@ -1,14 +1,15 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-#include "popupdialogue.h"
 #include <QDesktopServices>
 #include <stdlib.h>
 #include <string>
 #include <stdlib.h>
+#include <iostream>
 
 using namespace std;
 
 QString text;
+QAbstractButton* checkedButton;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -16,6 +17,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui -> setupUi(this);
     ui -> timeDisplay -> setAlignment(Qt::AlignCenter);
+    ui -> difficultyLabel -> setAlignment(Qt::AlignCenter);
+    ui -> allergyLabel -> setAlignment(Qt::AlignCenter);
+    ui -> difficultyAny -> setChecked(true);
 }
 
 MainWindow::~MainWindow()
@@ -43,24 +47,27 @@ void MainWindow::on_actionGitHub_triggered()
     QDesktopServices::openUrl(QUrl(link));
 }
 
-
-void MainWindow::on_actionApplication_triggered()
-{
-
-}
-
-
 void MainWindow::on_searchButton_clicked()
 {
+    // Check for radio buttons
+    QAbstractButton* buttons[] = {
+                                 ui -> difficultyAny,
+                                 ui -> difficultyHard,
+                                 ui -> difficultyMedium,
+                                 ui -> difficultyEasy } ;
 
+    QAbstractButton* checkedButton;
+
+    for(int i = 0; i < 4; i++){
+        if(buttons[i]->isChecked()){
+            checkedButton = buttons[i];
+        }
+    }
+
+    QString tmp = checkedButton -> objectName();
+
+    cout << tmp.toStdString() << endl;
 }
-
-
-void MainWindow::on_dropDownBox_triggered(QAction *arg1)
-{
-
-}
-
 
 void MainWindow::on_timeSlider_sliderMoved(int position)
 {
@@ -85,13 +92,5 @@ void MainWindow::on_timeSlider_valueChanged(int value)
     if(value / 60 == 0 && value % 60 == 0) text = "No Preference";
 
     ui -> timeDisplay -> setText(text);
-}
-
-
-void MainWindow::on_dropDownBox_clicked()
-{
-    PopupDialogue popupWindow;
-    popupWindow.setModal(true);
-    popupWindow.exec();
 }
 
