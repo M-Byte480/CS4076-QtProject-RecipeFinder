@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include "popupdialogue.h"
 #include <QDesktopServices>
 #include <stdlib.h>
 #include <string>
@@ -84,5 +85,13 @@ void MainWindow::on_timeSlider_valueChanged(int value)
     if(value / 60 == 0 && value % 60 == 0) text = "No Preference";
 
     ui -> timeDisplay -> setText(text);
+}
+
+
+void MainWindow::on_dropDownBox_clicked()
+{
+    PopupDialogue popupWindow;
+    popupWindow.setModal(true);
+    popupWindow.exec();
 }
 

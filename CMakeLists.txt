@@ -31,6 +31,7 @@ set(PROJECT_SOURCES
         allergies.cpp
         recipes.csv
         filehandler.h filehandler.cpp
+        popupdialogue.h popupdialogue.cpp popupdialogue.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

@@ -32,6 +32,8 @@ private slots:
 
     void on_timeSlider_valueChanged(int value);
 
+    void on_dropDownBox_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
