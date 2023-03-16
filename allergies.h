@@ -2,10 +2,11 @@
 #define ALLERGIES_H
 
 
-class allergies
+class Allergy
 {
 public:
-    allergies();
+    Allergy();
+    bool compareTo(const Allergy& that);
 };
 
 #endif // ALLERGIES_H

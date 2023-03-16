@@ -1,21 +1,43 @@
 #include <iostream>
 #include <stdlib.h>
+#include "food.h"
 
-using namespace std;
+//Food::Food(string name,
+//            int numberOfIngredients,
+//            int timeInMinutes,
+//            string* ingredients,
+//            string* allergies,
+//            string* methods)
+//        try : Consumable(name)
+//        {
+//            noIngredients = numberOfIngredients;
+//            timeToMake = timeInMinutes;
+//            ingredients = ingredients;
+//            allergies = allergies;
+//            methods = methods;
+//        }
+//        catch(const exception &e)
+//        {
+//            cout << "Broken" << endl;
+//        };
 
-class food{
-    public: // Access specifiers
-        string name;
-        int noIngredients;
-        int timeToMake;
-        string* ingredients;
-        string* allergies;
-
-        food(string name, int noIng, int timeInMinutes, string* ingredients, string* allergies){
-            name = name;
-            noIngredients = noIng;
+/*
+        Food(string name,
+             int numberOfIngredients,
+             int timeInMinutes,
+             string* ingredients,
+             string* allergies,
+             string* methods)
+        try : Consumable(name)
+        {
+            noIngredients = numberOfIngredients;
             timeToMake = timeInMinutes;
             ingredients = ingredients;
             allergies = allergies;
+            methods = methods;
         }
-};
+        catch(const exception &e)
+        {
+            cout << "Broken" << endl;
+        };
+*/

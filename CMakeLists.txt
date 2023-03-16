@@ -16,18 +16,17 @@ set(TS_FILES cs4076_en_150.ts)
 
 set(PROJECT_SOURCES
         main.cpp
-        mainwindow.cpp
-        mainwindow.h
-        mainwindow.ui
+        mainwindow.cpp mainwindow.h mainwindow.ui
         ${TS_FILES}
         resources.qrc
-        food.cpp
         Requirements.txt
         consumable.cpp
-        allergies.h
-        allergies.cpp
         recipes.csv
+        allergies.h allergies.cpp
+        food.cpp food.h
         filehandler.h filehandler.cpp
+        helper.h helper.cpp
+        hello.txt
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

@@ -2,15 +2,18 @@
 #include <string>
 
 using namespace std;
-//#include "allergies.h"
 
 
-class allergy
+class Allergy
 {
     public:
         string ingredient;
 
-        allergy(string name){
+        Allergy(string name){
             ingredient = name;
         }
+
+        bool compareTo(const Allergy& that){
+          return ingredient == that.ingredient;
+        };
 };

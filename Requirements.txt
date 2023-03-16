@@ -1,6 +1,6 @@
 QMenu ✓
-QCheckBox
-QRadioButton
+QCheckBox ✓
+QRadioButton ✓
 QSlider ✓
 QGridLayout✓
 QBoxLayout
@@ -15,15 +15,15 @@ Abstract classes
 Copy constructors (deep , shallow copy)
 Bit structures
 Advanced pre-processor directives
-C++ Object Construction Sequence
-Initializer List
+C++ Object Construction Sequence ✓
+Initializer List ✓
 C++ References
-Pointers
-Inheritance
-Destructors
-Memory management
-Header files (inclusion guards)
-Arrays and pointers
+Pointers ✓
+Inheritance ✓
+Destructors ✓
+Memory management ✓
+Header files (inclusion guards) ✓
+Arrays and pointers ✓
 Friendship
-Global variables
-Private, Public, Protected
+Global variables ✓
+Private, Public, Protected ✓

@@ -10,6 +10,7 @@ using namespace std;
 
 QString text;
 QAbstractButton* checkedButton;
+map<string, bool> allergies;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -64,9 +65,33 @@ void MainWindow::on_searchButton_clicked()
         }
     }
 
-    QString tmp = checkedButton -> objectName();
+    QString checkedDiff = checkedButton -> objectName();
+    cout << checkedDiff.toStdString() << endl;
 
-    cout << tmp.toStdString() << endl;
+    // Check for tickedBox
+    QAbstractButton* buttonBox[] = {
+        ui -> allergyFish,
+        ui -> allergyMilk,
+        ui -> allergyNuts,
+        ui -> allergyWheat
+    };
+
+    map<string, bool>::iterator itr;
+
+    for (int i = 0; i < sizeof(buttonBox) / sizeof(QAbstractButton*); ++i) {
+
+        allergies.insert(pair<string, bool> ((buttonBox[i] -> objectName()).toStdString() ,false));
+
+        if(buttonBox[i]->isChecked()){
+            itr = allergies.find(buttonBox[i] -> objectName().toStdString());
+            if(itr != allergies.end())
+                itr -> second = true;
+        }
+    }
+
+    for(itr = allergies.begin(); itr != allergies.end(); itr++){
+        cout << "Key = " << itr -> first << ", Value = " << itr -> second << endl;
+    }
 }
 
 void MainWindow::on_timeSlider_sliderMoved(int position)
@@ -93,4 +118,3 @@ void MainWindow::on_timeSlider_valueChanged(int value)
 
     ui -> timeDisplay -> setText(text);
 }
-
