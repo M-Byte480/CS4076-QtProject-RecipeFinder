@@ -11,15 +11,22 @@ using namespace std;
 QString text;
 QAbstractButton* checkedButton;
 map<string, bool> allergies;
+int minutes = 0;
+
+// create inline method here
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui -> setupUi(this);
+
+    // Algint text in the labels to center
     ui -> timeDisplay -> setAlignment(Qt::AlignCenter);
     ui -> difficultyLabel -> setAlignment(Qt::AlignCenter);
     ui -> allergyLabel -> setAlignment(Qt::AlignCenter);
+
+    // Default tick the radio button
     ui -> difficultyAny -> setChecked(true);
 }
 
@@ -92,6 +99,14 @@ void MainWindow::on_searchButton_clicked()
     for(itr = allergies.begin(); itr != allergies.end(); itr++){
         cout << "Key = " << itr -> first << ", Value = " << itr -> second << endl;
     }
+
+    if(minutes == 0){
+        minutes = INT_MAX;
+    }
+    cout << minutes << endl;
+
+    // We have value of slider, allergies, and difficulty
+
 }
 
 void MainWindow::on_timeSlider_sliderMoved(int position)
@@ -107,7 +122,7 @@ void MainWindow::on_timeSlider_sliderMoved(int position)
 
 void MainWindow::on_timeSlider_valueChanged(int value)
 {
-    text = "None";
+//    text = "None";
     QString hour = QString::number(value / 60);
     QString min = QString::number(value % 60);
     QString time = hour + ":" + min;
@@ -117,4 +132,6 @@ void MainWindow::on_timeSlider_valueChanged(int value)
     if(value / 60 == 0 && value % 60 == 0) text = "No Preference";
 
     ui -> timeDisplay -> setText(text);
+
+    minutes = value;
 }

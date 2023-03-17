@@ -14,6 +14,6 @@ class Consumable
         }
         virtual void print();
 
-    private:
+    protected:
         string* name;
 };
