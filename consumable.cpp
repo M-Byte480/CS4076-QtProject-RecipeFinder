@@ -12,8 +12,10 @@ class Consumable
         ~Consumable(){
             delete name;
         }
-        virtual void print();
+        virtual void howToConsume() = 0;
+        virtual void toString() = 0;
 
     protected:
         string* name;
+
 };

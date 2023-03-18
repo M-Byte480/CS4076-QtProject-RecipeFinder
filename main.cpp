@@ -1,17 +1,19 @@
 #include "mainwindow.h"
-#include "filehandler.h"
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
 #include <QDesktopServices>
+//#include "helper.h"
+#include "food.h"
+
+using namespace std;
 
 int main(int argc, char *argv[])
 {
-    fileHandler fl;
-    fl.readFile();
+//    Food pizza("Pizza");
+//    pizza.toString();
 
     QApplication a(argc, argv);
-
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
     for (const QString &locale : uiLanguages) {
@@ -25,3 +27,4 @@ int main(int argc, char *argv[])
     w.show();
     return a.exec();
 }
+

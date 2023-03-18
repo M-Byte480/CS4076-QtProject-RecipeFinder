@@ -13,6 +13,6 @@
         <file>img/icons8-upload-cute-color-16.png</file>
         <file>img/icons8-upload-cute-color-32.png</file>
         <file>img/icons8-upload-cute-color-96.png</file>
-        <file>img/icons8-emergency-exit-48.png</file>
+        <file alias="test">img/icons8-emergency-exit-48.png</file>
     </qresource>
 </RCC>

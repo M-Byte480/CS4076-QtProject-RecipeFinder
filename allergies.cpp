@@ -1,19 +1,15 @@
 #include <stdlib.h>
 #include <string>
+#include "allergies.h"
 
 using namespace std;
 
+Allergy::Allergy(){}
 
-class Allergy
-{
-    public:
-        string ingredient;
+Allergy::Allergy(string name) : name{name}{
+}
 
-        Allergy(string name){
-            ingredient = name;
-        }
-
-        bool compareTo(const Allergy& that){
-          return ingredient == that.ingredient;
-        };
+bool Allergy::compareTo(const Allergy& that){
+  return name == that.name;
 };
+

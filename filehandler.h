@@ -6,11 +6,18 @@
 #include <fstream>
 #include "food.cpp"
 #include <sstream>
+#include <vector>
 
 using namespace std;
+
 class fileHandler{
-    public:
-        void readFile();
+public:
+    void readFile(string name);
+    ~fileHandler(){
+//        delete data;
+    }
+private:
+    vector<std::string> data;
 };
 
 

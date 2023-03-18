@@ -1,5 +1,8 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include "filehandler.h"
+#include "food.h"
+#include "helper.h"
 #include <QDesktopServices>
 #include <stdlib.h>
 #include <string>
@@ -7,11 +10,13 @@
 #include <iostream>
 
 using namespace std;
+using namespace helper;
 
 QString text;
 QAbstractButton* checkedButton;
 map<string, bool> allergies;
 int minutes = 0;
+string path = "..//cs4076//recipes//";
 
 // create inline method here
 
@@ -19,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+
     ui -> setupUi(this);
 
     // Algint text in the labels to center
@@ -57,6 +63,13 @@ void MainWindow::on_actionGitHub_triggered()
 
 void MainWindow::on_searchButton_clicked()
 {
+
+    // Pre-processing data
+    fileHandler data;
+    data.readFile(path + "data.data");
+
+//    Food pizza("Pizza", 3, 80, "m", "m", "m");
+
     // Check for radio buttons
     QAbstractButton* buttons[] = {
                                  ui -> difficultyAny,
@@ -73,7 +86,6 @@ void MainWindow::on_searchButton_clicked()
     }
 
     QString checkedDiff = checkedButton -> objectName();
-    cout << checkedDiff.toStdString() << endl;
 
     // Check for tickedBox
     QAbstractButton* buttonBox[] = {
@@ -96,17 +108,19 @@ void MainWindow::on_searchButton_clicked()
         }
     }
 
-    for(itr = allergies.begin(); itr != allergies.end(); itr++){
-        cout << "Key = " << itr -> first << ", Value = " << itr -> second << endl;
-    }
-
     if(minutes == 0){
         minutes = INT_MAX;
     }
-    cout << minutes << endl;
-
     // We have value of slider, allergies, and difficulty
 
+//    cout << checkedDiff.toStdString() << endl;
+//    for(itr = allergies.begin(); itr != allergies.end(); itr++){
+//        cout << "Key = " << itr -> first << ", Value = " << itr -> second << endl;
+//    }
+
+//    cout << minutes << endl;
+
+    cout << endl;
 }
 
 void MainWindow::on_timeSlider_sliderMoved(int position)
