@@ -8,6 +8,7 @@
 #include <string>
 #include <stdlib.h>
 #include <iostream>
+#include "consumable.h"
 
 using namespace std;
 using namespace helper;
@@ -68,7 +69,48 @@ void MainWindow::on_searchButton_clicked()
     fileHandler data;
     data.readFile(path + "data.data");
 
-//    Food pizza("Pizza", 3, 80, "m", "m", "m");
+    // Initialize the foods
+    int numberOfFood;
+    numberOfFood = data.getData().capacity() - 1;
+
+
+    cout << "Number of food: " << numberOfFood << endl;
+    Food foodList[numberOfFood];
+    int tracker = 1;
+
+    for(tracker = 1 ; tracker <  data.getData().capacity(); tracker++ ){
+        string line = data.getData().at(tracker);
+
+        string name; string fileName; int difficulty; int numberOfIngredients; int time;
+        string listOfIngredients; string listOfAllergies; string listOfMethods;
+
+        vector<string> splitLine = split(line, ',');
+//        for(string s : splitLine){
+//            cout << s << endl;
+//        }
+        fileName = splitLine.at(0);
+        name = split(fileName, '.').at(0);
+
+        difficulty = stoi(splitLine.at(1));
+        time = stoi(splitLine.at(2));
+
+        numberOfIngredients = stoi(split(splitLine.at(3), ';').at(0));
+        listOfIngredients = split(splitLine.at(3),';').at(1);
+
+        listOfAllergies = split(splitLine.at(4), ';').at(1);
+        fileHandler recipe(path + fileName);
+        listOfMethods = recipe.getDataToString();
+
+        Food newFood(name,
+                     difficulty,
+                     numberOfIngredients,
+                     time,
+                     listOfIngredients,
+                     listOfAllergies,
+                     listOfMethods);
+        cout << tracker << endl;
+        foodList[0] = newFood;
+    }
 
     // Check for radio buttons
     QAbstractButton* buttons[] = {

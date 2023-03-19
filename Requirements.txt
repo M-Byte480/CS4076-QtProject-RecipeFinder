@@ -5,19 +5,19 @@ QSlider ✓
 QGridLayout✓
 QBoxLayout
 
-template classes ✓
 Multiple inheritance
-namespaces ✓
 Programmer defined exceptions
 Unions
-Operator overloading
-Abstract classes
-Copy constructors (deep , shallow copy)
 Bit structures
 Advanced pre-processor directives
+template classes ✓
+namespaces ✓
+Operator overloading ✓
+Abstract classes ✓
+Copy constructors (deep , shallow copy) ✓
 C++ Object Construction Sequence ✓
 Initializer List ✓
-C++ References
+C++ References ✓
 Pointers ✓
 Inheritance ✓
 Destructors ✓

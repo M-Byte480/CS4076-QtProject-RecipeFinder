@@ -12,11 +12,15 @@ using namespace std;
 
 class fileHandler{
 public:
+    fileHandler();
+    fileHandler(string name);
     void readFile(string name);
     ~fileHandler(){
-//        delete data;
     }
-private:
+    vector<std::string> getData();
+    void printData();
+    string getDataToString();
+protected:
     vector<std::string> data;
 };
 

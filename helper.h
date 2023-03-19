@@ -11,7 +11,7 @@ namespace helper{
         std::cout << a;
     };
     template <typename T> static void println(T a){
-        print((std::string) (a + '\n') );
+       std::cout << (a) << endl;
     };
 
     vector<string> split(string str, char splitter);

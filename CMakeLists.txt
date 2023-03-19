@@ -20,7 +20,7 @@ set(PROJECT_SOURCES
         ${TS_FILES}
         resources.qrc
         Requirements.txt
-        consumable.cpp
+        consumable.cpp consumable.h
         recipes.csv
         allergies.h allergies.cpp
         food.cpp food.h

@@ -1,21 +1,9 @@
-#include <stdlib.h>
-#include <string>
+#include "consumable.h"
 
-using namespace std;
+//consumable::consumable(){
+//    name = new string();
+//}
 
-class Consumable
-{
-    public:
-        Consumable(string nameOfConsumable){
-            *name = nameOfConsumable;
-        }
-        ~Consumable(){
-            delete name;
-        }
-        virtual void howToConsume() = 0;
-        virtual void toString() = 0;
-
-    protected:
-        string* name;
-
-};
+//consumable::consumable(string nameOfConsumable){
+//    *name = nameOfConsumable;
+//}

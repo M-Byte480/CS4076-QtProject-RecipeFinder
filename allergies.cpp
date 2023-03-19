@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <string>
 #include "allergies.h"
 
 using namespace std;

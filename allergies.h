@@ -7,7 +7,9 @@ using namespace std;
 
 class Allergy
 {
+
 friend class Food;
+
 public:
     Allergy();
     Allergy(string name);
