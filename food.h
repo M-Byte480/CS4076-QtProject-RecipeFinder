@@ -38,14 +38,21 @@ public:
         difficulty = 0;
     }
 
-    Food(   string name, int difficulty, int numberOfIngredients, int timeInMinutes,
-            string listOfIngredients, string listOfAllergies,
+    Food(   string name,
+            int difficulty,
+            int numberOfIngredients,
+            int timeInMinutes,
+            string listOfIngredients,
+            string listOfAllergies,
             string listOfMethods)
     try
-        : consumable(name), timeToMake{timeInMinutes}, noIngredients{numberOfIngredients}, difficulty{difficulty}
+        : consumable(name),
+          timeToMake{timeInMinutes},
+          noIngredients{numberOfIngredients},
+          difficulty{difficulty}
         {
-        noIngredients = 0;
-        timeToMake = 0;
+//        noIngredients = 0;
+//        timeToMake = 0;
         size = 0;
         methods = new string();
         ingredients = new string();
@@ -73,10 +80,10 @@ public:
 
 
     ~Food(){
-        delete methods;
-        delete ingredients;
-        delete allergiesString;
-        delete[] allergies;
+//        delete methods;
+//        delete ingredients;
+//        delete allergiesString;
+//        delete[] allergies;
     }
 
     Food(const Food &that) : consumable(that){
@@ -109,8 +116,8 @@ public:
         cout << "Eat" << endl;
     }
 
-    void toString(){
-        cout << endl;
+    string toString(){
+        return *name;
     }
 
     void setName(string newName){
@@ -132,6 +139,23 @@ public:
     void setAlleriges(string newAllergies){
         *allergiesString = newAllergies;
         // Set the array
+    }
+
+    int getDifficulty(){
+        return this -> difficulty;
+    }
+
+    int getTime(){
+        return this->timeToMake;
+    }
+    int getNoAllergies(){
+        return sizeof(*allergies)/sizeof(Allergy);
+    }
+    Allergy* getAllergies(){
+        return allergies;
+    }
+    string* getAllergiesString(){
+        return allergiesString;
     }
 };
 

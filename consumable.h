@@ -20,7 +20,7 @@ public:
         *(this -> name) = *(that.name);
     }
     virtual void howToConsume() = 0;
-    virtual void toString() = 0;
+    virtual string toString() = 0;
     string getName(){
         return *(this->name);
     }

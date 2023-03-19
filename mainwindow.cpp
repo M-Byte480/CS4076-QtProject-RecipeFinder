@@ -4,11 +4,13 @@
 #include "food.h"
 #include "helper.h"
 #include <QDesktopServices>
+#include <forward_list>
 #include <stdlib.h>
 #include <string>
 #include <stdlib.h>
 #include <iostream>
 #include "consumable.h"
+#include "QListWidget"
 
 using namespace std;
 using namespace helper;
@@ -27,7 +29,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
 
     ui -> setupUi(this);
-
+    ui -> resultList -> addItem("Test");
     // Algint text in the labels to center
     ui -> timeDisplay -> setAlignment(Qt::AlignCenter);
     ui -> difficultyLabel -> setAlignment(Qt::AlignCenter);
@@ -75,9 +77,9 @@ void MainWindow::on_searchButton_clicked()
 
 
     cout << "Number of food: " << numberOfFood << endl;
-    Food foodList[numberOfFood];
+    forward_list<Food> foodList;
     int tracker = 1;
-
+    Food newFood;
     for(tracker = 1 ; tracker <  data.getData().capacity(); tracker++ ){
         string line = data.getData().at(tracker);
 
@@ -101,23 +103,27 @@ void MainWindow::on_searchButton_clicked()
         fileHandler recipe(path + fileName);
         listOfMethods = recipe.getDataToString();
 
-        Food newFood(name,
+//        cout << listOfMethods << endl;
+        newFood = Food(name,
                      difficulty,
                      numberOfIngredients,
                      time,
                      listOfIngredients,
                      listOfAllergies,
                      listOfMethods);
-        cout << tracker << endl;
-        foodList[0] = newFood;
+//        Food temp;
+
+        foodList.push_front(newFood);
     }
+
 
     // Check for radio buttons
     QAbstractButton* buttons[] = {
-                                 ui -> difficultyAny,
-                                 ui -> difficultyHard,
-                                 ui -> difficultyMedium,
-                                 ui -> difficultyEasy } ;
+        ui -> difficultyAny,
+        ui -> difficultyEasy,
+        ui -> difficultyMedium,
+        ui -> difficultyHard
+    } ;
 
     QAbstractButton* checkedButton;
 
@@ -131,10 +137,10 @@ void MainWindow::on_searchButton_clicked()
 
     // Check for tickedBox
     QAbstractButton* buttonBox[] = {
-        ui -> allergyFish,
-        ui -> allergyMilk,
-        ui -> allergyNuts,
-        ui -> allergyWheat
+        ui -> fish,
+        ui -> milk,
+        ui -> nuts,
+        ui -> wheat
     };
 
     map<string, bool>::iterator itr;
@@ -155,13 +161,38 @@ void MainWindow::on_searchButton_clicked()
     }
     // We have value of slider, allergies, and difficulty
 
-//    cout << checkedDiff.toStdString() << endl;
-//    for(itr = allergies.begin(); itr != allergies.end(); itr++){
-//        cout << "Key = " << itr -> first << ", Value = " << itr -> second << endl;
-//    }
+    cout << checkedDiff.toStdString() << endl;
+    for(itr = allergies.begin(); itr != allergies.end(); itr++){
+        cout << "Key = " << itr -> first << ", Value = " << itr -> second << endl;
+    }
 
 //    cout << minutes << endl;
+    map<string, bool>::iterator iterator;
+    ui -> resultList -> clear();
+    string diff[3] = {"difficultyEasy", "difficultyMedium", "difficultyHard"};
+    for(Food f : foodList){
+        bool bad = false;
+        bool timeTakes = f.getTime() <= minutes;
+        string difficult = checkedDiff.toStdString();
+//        cout << difficult << endl;
+        bool dif = (difficult == "difficultyAny" || diff[f.getDifficulty() - 1] == difficult);
+        if(timeTakes && dif){
+            Allergy* allergy = f.getAllergies();
+            string al = *f.getAllergiesString();
+            for(int i = 0; i < f.getNoAllergies(); i++){
+                iterator = allergies.find(al);
 
+                if(itr -> second == true){
+                    bad = true;
+                    break;
+                }
+            }
+            if(!bad){
+                QString qstr = QString::fromStdString(f.toString());
+                ui -> resultList -> addItem( qstr );
+            }
+        }
+    }
     cout << endl;
 }
 
@@ -191,3 +222,9 @@ void MainWindow::on_timeSlider_valueChanged(int value)
 
     minutes = value;
 }
+
+void MainWindow::on_resultList_itemDoubleClicked(QListWidgetItem *item)
+{
+    cout << "Clicked" << endl;
+}
+

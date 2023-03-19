@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "popupdialogue.h"
+#include "qlistwidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -28,6 +29,8 @@ private slots:
     void on_timeSlider_sliderMoved(int position);
 
     void on_timeSlider_valueChanged(int value);
+
+    void on_resultList_itemDoubleClicked(QListWidgetItem *item);
 
 private:
     Ui::MainWindow *ui;

@@ -15,7 +15,7 @@ public:
     Allergy(string name);
     bool compareTo(const Allergy& that);
 
-
+    string toString();
 private:
     string name;
 };

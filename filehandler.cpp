@@ -44,7 +44,10 @@ void fileHandler::printData(){
 }
 
 string fileHandler::getDataToString(){
-//    string str(data.begin(), data.end());
-//    return str;
-    return "Hello world";
+    string str;
+    for(string s : data){
+        str.append(s);
+    }
+    return str;
+//    return "Hello world";
 }

@@ -105,19 +105,6 @@ color: rgb(0, 0, 0);</string>
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QTableView" name="recipeResults">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>160</y>
-      <width>761</width>
-      <height>391</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(26, 49, 255);</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="timeDisplay">
     <property name="geometry">
      <rect>
@@ -199,34 +186,44 @@ color: rgb(0, 0, 0);</string>
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="allergyNuts">
+      <widget class="QCheckBox" name="nuts">
        <property name="text">
         <string>Nuts</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="allergyMilk">
+      <widget class="QCheckBox" name="milk">
        <property name="text">
         <string>Milk</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="allergyFish">
+      <widget class="QCheckBox" name="fish">
        <property name="text">
         <string>Fish</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="allergyWheat">
+      <widget class="QCheckBox" name="wheat">
        <property name="text">
         <string>Wheat</string>
        </property>
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QListWidget" name="resultList">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>160</y>
+      <width>761</width>
+      <height>401</height>
+     </rect>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -259,7 +256,7 @@ color: rgb(0, 0, 0);</string>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionQuit">
    <property name="icon">
-    <iconset resource="resources.qrc">
+    <iconset>
      <normaloff>:/images/img/icons8-emergency-exit-48.png</normaloff>:/images/img/icons8-emergency-exit-48.png</iconset>
    </property>
    <property name="text">
@@ -285,8 +282,6 @@ color: rgb(0, 0, 0);</string>
    </property>
   </action>
  </widget>
- <resources>
-  <include location="resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

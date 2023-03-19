@@ -12,3 +12,7 @@ bool Allergy::compareTo(const Allergy& that){
   return name == that.name;
 };
 
+string Allergy::toString(){
+    return name;
+}
+
