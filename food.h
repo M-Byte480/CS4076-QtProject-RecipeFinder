@@ -22,8 +22,8 @@ private: // Access specifiers
     string* ingredients;
     string* allergiesString;
     int size;
+    int* difficulty;
     Allergy* allergies;
-    int difficulty;
 
 public:
     Food(string name = "name") : consumable(name)
@@ -35,11 +35,12 @@ public:
         ingredients = new string();
         allergiesString = new string();
         allergies = new Allergy[size];
-        difficulty = 0;
+        difficulty = new int();
+        *difficulty = 0;
     }
 
     Food(   string name,
-            int difficulty,
+            int diff,
             int numberOfIngredients,
             int timeInMinutes,
             string listOfIngredients,
@@ -49,7 +50,7 @@ public:
         : consumable(name),
           timeToMake{timeInMinutes},
           noIngredients{numberOfIngredients},
-          difficulty{difficulty}
+          difficulty{new int()}
         {
 //        noIngredients = 0;
 //        timeToMake = 0;
@@ -59,6 +60,7 @@ public:
         allergiesString = new string();
         allergies = new Allergy[size];
 
+        *difficulty = diff;
         *ingredients = listOfIngredients;
         *allergiesString = listOfAllergies;
         *methods = listOfMethods;
@@ -70,7 +72,7 @@ public:
             allergies[i] = Allergy(temp.at(i));
         }
 
-
+        timeToMake = timeInMinutes;
         }
         catch(const exception &e)
         {
@@ -80,14 +82,17 @@ public:
 
 
     ~Food(){
-//        delete methods;
-//        delete ingredients;
-//        delete allergiesString;
-//        delete[] allergies;
+        delete methods;
+        delete ingredients;
+        delete allergiesString;
+        delete difficulty;
+        delete[] allergies;
     }
 
     Food(const Food &that) : consumable(that){
-        this -> noIngredients = that.noIngredients;
+        this -> noIngredients = that.noIngredients;  
+        this->size = that.size;
+        this->timeToMake = that.timeToMake;
 
         ingredients = new string();
         *ingredients = *that.ingredients;
@@ -97,6 +102,12 @@ public:
 
         methods = new string();
         *methods = *that.methods;
+
+        difficulty = new int();
+        *difficulty = *that.difficulty;
+
+        allergies = new Allergy[size];
+        *allergies = *that.allergies;
     }
 
     string getName(){
@@ -125,7 +136,7 @@ public:
     }
 
     void setDifficulty(int newDiff){
-        difficulty = newDiff;
+        *difficulty = newDiff;
     }
 
     void setMethods(string method){
@@ -142,7 +153,7 @@ public:
     }
 
     int getDifficulty(){
-        return this -> difficulty;
+        return *difficulty;
     }
 
     int getTime(){
@@ -157,6 +168,23 @@ public:
     string* getAllergiesString(){
         return allergiesString;
     }
+
+    void setTime(int t){
+        timeToMake = t;
+    }
+
+    friend ostream& operator<<( ostream& oStream, const Food &food){
+        return (oStream << food.name);
+    }
+
+    friend string operator* (string s, int a){
+        string toReturn;
+        for (int var = 0; var < a; ++var) {
+            toReturn = toReturn + s;
+        }
+        return toReturn;
+    }
+
 };
 
 

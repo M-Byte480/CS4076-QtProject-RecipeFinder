@@ -27,6 +27,8 @@ set(PROJECT_SOURCES
         filehandler.h filehandler.cpp
         helper.h helper.cpp
         hello.txt
+        popup.h popup.cpp popup.ui
+        myexception.h myexception.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

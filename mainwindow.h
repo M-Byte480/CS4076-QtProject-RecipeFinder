@@ -34,5 +34,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+
+signals:
+    void sendMethod(QString);
 };
 #endif // MAINWINDOW_H

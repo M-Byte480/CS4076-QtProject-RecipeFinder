@@ -10,9 +10,9 @@ Programmer defined exceptions
 Unions
 Bit structures
 Advanced pre-processor directives
+Operator overloading ✓
 template classes ✓
 namespaces ✓
-Operator overloading ✓
 Abstract classes ✓
 Copy constructors (deep , shallow copy) ✓
 C++ Object Construction Sequence ✓

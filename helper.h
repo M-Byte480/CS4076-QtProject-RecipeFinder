@@ -6,6 +6,7 @@
 #include <vector>
 
 using namespace std;
+
 namespace helper{
     template <typename T> static void print(T a){
         std::cout << a;
@@ -15,6 +16,9 @@ namespace helper{
     };
 
     vector<string> split(string str, char splitter);
+
+
+
 }
 
 
