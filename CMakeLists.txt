@@ -29,6 +29,7 @@ set(PROJECT_SOURCES
         hello.txt
         popup.h popup.cpp popup.ui
         myexception.h myexception.cpp
+        fileinputreader.h fileinputreader.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

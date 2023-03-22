@@ -14,13 +14,14 @@ class fileHandler{
 public:
     fileHandler();
     fileHandler(string name);
-    void readFile(string name);
+    virtual void readFile(string name);
     ~fileHandler(){
     }
     vector<std::string> getData();
     void printData();
     string getDataToString();
 protected:
+    int count;
     vector<std::string> data;
 };
 

@@ -20,7 +20,7 @@ fileHandler::fileHandler(string name){
 
 void fileHandler::readFile(string name){
     ifstream myFile(name);
-    int count = 0;
+    count = 0;
 //    vector<string> data;
     // We count how many recipes we need
     string line;

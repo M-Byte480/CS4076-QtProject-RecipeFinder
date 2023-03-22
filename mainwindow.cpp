@@ -9,9 +9,10 @@
 #include <string>
 #include <stdlib.h>
 #include <iostream>
-#include "consumable.h"
 #include "QListWidget"
 #include "popup.h"
+//#include "myexception.h"
+#include "fileinputreader.h"
 
 using namespace std;
 using namespace helper;
@@ -39,19 +40,21 @@ MainWindow::MainWindow(QWidget *parent)
     // Default tick the radio button
     ui -> difficultyAny -> setChecked(true);
 
+//    ui -> timeSlider ->setTickInterval(11);
     //
     // Pre-processing data
-    fileHandler data;
-    data.readFile(path + "data.data");
-
-    // Initialize the foods
-    int numberOfFood;
-    numberOfFood = data.getData().capacity() - 1;
-
-
-    cout << "Number of food: " << numberOfFood << endl;
-    int tracker = 1;
     try{
+        fileInputReader data;
+        data.readFile(path + "data.data");
+
+
+        // Initialize the foods
+        int numberOfFood;
+        numberOfFood = data.getData().capacity() - 1;
+
+
+//        cout << "Number of food: " << numberOfFood << endl;
+        int tracker = 1;
         for(tracker = 1 ; tracker <  data.getData().capacity(); tracker++ ){
             string line = data.getData().at(tracker);
 
@@ -66,7 +69,7 @@ MainWindow::MainWindow(QWidget *parent)
             name = split(fileName, '.').at(0);
             cout <<"Difficulty read: " << splitLine.at(1) << endl;
             difficulty = stoi(splitLine.at(1));
-            cout << "Difficulty Caste; " << difficulty << endl;
+//            cout << "Difficulty Caste; " << difficulty << endl;
             //        cout << "Pizza Dif " << difficulty << endl;
             time = stoi(splitLine.at(2));
 
@@ -74,7 +77,7 @@ MainWindow::MainWindow(QWidget *parent)
             listOfIngredients = split(splitLine.at(3),';').at(1);
 
             listOfAllergies = split(splitLine.at(4), ';').at(1);
-            fileHandler recipe(path + fileName);
+            fileInputReader recipe(path + fileName);
             listOfMethods = recipe.getDataToString();
 
             //        cout << listOfMethods << endl;
@@ -91,8 +94,10 @@ MainWindow::MainWindow(QWidget *parent)
             //        Food temp;
 
             foodList.push_front(newFood);
-            //        delete newFood;
+        //        delete newFood;
         }
+    }catch(myException& e){
+        cout << e.what() << endl;
     }catch(exception& e){
         cout << e.what() << endl;
     }
@@ -130,10 +135,10 @@ void MainWindow::on_searchButton_clicked()
 
     forward_list<Food>::iterator it;
 
-    for(it = foodList.begin(); it != foodList.end(); it++){
-        cout << it->getName() << endl;
-        cout << it->getTime() << endl;
-    }
+//    for(it = foodList.begin(); it != foodList.end(); it++){
+//        cout << it->getName() << endl;
+//        cout << it->getTime() << endl;
+//    }
     // Check for radio buttons
     QAbstractButton* buttons[] = {
         ui -> difficultyAny,
@@ -193,7 +198,7 @@ void MainWindow::on_searchButton_clicked()
         bool bad = false;
         bool timeTakes = f.getTime() <= minutes;
         string difficult = checkedDiff.toStdString();
-        cout << "\n\n DIFFICULTY RETURNED :" << f.getDifficulty() << endl;
+//        cout << "\n\n DIFFICULTY RETURNED :" << f.getDifficulty() << endl;
         bool dif = (difficult == "difficultyAny" || diff[f.getDifficulty() - 1] == difficult);
         if(timeTakes && dif){
             Allergy* allergy = f.getAllergies();
@@ -230,8 +235,8 @@ void MainWindow::on_timeSlider_sliderMoved(int position)
 void MainWindow::on_timeSlider_valueChanged(int value)
 {
     //    text = "None";
-    QString hour = QString::number(value / 60);
-    QString min = QString::number(value % 60);
+    QString hour = (value / 60 >= 10) ? QString::number(value / 60) : QString::fromStdString("0") + QString::number(value / 60);
+    QString min = (value % 60 >= 10) ? QString::number(value % 60) : QString::fromStdString("0") + QString::number(value % 60);
     QString time = hour + ":" + min;
 
     text = time + " Hour";
@@ -245,15 +250,37 @@ void MainWindow::on_timeSlider_valueChanged(int value)
 
 void MainWindow::on_resultList_itemDoubleClicked(QListWidgetItem *item)
 {
-    cout << "Clicked" << endl;
     this->hide();
     Popup *popupWindow = new Popup();
     popupWindow -> setModal(true);
 
+    QString *method = new QString;
+    string title = item -> text().toStdString();
+//    cout << title.toStdString() << endl;
+    forward_list<Food>::iterator ptr;
+    for(ptr = foodList.begin(); ptr != foodList.end() ; ptr++){
+        if(ptr->getName() == title){
+            *method = QString::fromStdString(ptr->getMethods());
+        }
+    }
+
     connect(this, SIGNAL(sendMethod(QString)), popupWindow, SLOT(displayMethod(QString)));
-    emit sendMethod("Hello World, by Milan");
+    emit sendMethod(*method);
 
     popupWindow -> exec();
     this->show();
+    delete method;
+}
+
+
+void MainWindow::on_dropDownBox_clicked()
+{
+    string file = "tmp";
+    try{
+        fileInputReader f(file);
+    }catch(myException& e){
+        cout << e.what() << endl;
+        cout << file << endl;
+    }
 }
 

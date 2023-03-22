@@ -143,6 +143,9 @@ public:
         *methods = method;
     }
 
+    string getMethods(){
+        return *methods;
+    }
     void setIngredients(string newIngredients){
         *ingredients = newIngredients;
     }

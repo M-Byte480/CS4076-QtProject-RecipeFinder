@@ -32,6 +32,8 @@ private slots:
 
     void on_resultList_itemDoubleClicked(QListWidgetItem *item);
 
+    void on_dropDownBox_clicked();
+
 private:
     Ui::MainWindow *ui;
 
