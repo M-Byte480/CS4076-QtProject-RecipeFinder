@@ -7,7 +7,9 @@
 
 using namespace std;
 
+
 namespace helper{
+//    const string whiteSpace = "\s";
     template <typename T> static void print(T a){
         std::cout << a;
     };
@@ -16,8 +18,9 @@ namespace helper{
     };
 
     vector<string> split(string str, char splitter);
+    vector<string> split(string str, string phrase);
 
-
+    string trim(string s);
 
 }
 

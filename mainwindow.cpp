@@ -50,7 +50,7 @@ MainWindow::MainWindow(QWidget *parent)
 
         // Initialize the foods
         int numberOfFood;
-        numberOfFood = data.getData().capacity() - 1;
+//        numberOfFood = data.getData().capacity() - 1;
 
 
 //        cout << "Number of food: " << numberOfFood << endl;
@@ -67,7 +67,7 @@ MainWindow::MainWindow(QWidget *parent)
             //        }
             fileName = splitLine.at(0);
             name = split(fileName, '.').at(0);
-            cout <<"Difficulty read: " << splitLine.at(1) << endl;
+//            cout <<"Difficulty read: " << splitLine.at(1) << endl;
             difficulty = stoi(splitLine.at(1));
 //            cout << "Difficulty Caste; " << difficulty << endl;
             //        cout << "Pizza Dif " << difficulty << endl;
@@ -124,21 +124,35 @@ void MainWindow::on_actionLinkedIn_triggered()
 
 void MainWindow::on_actionGitHub_triggered()
 {
-    QString link = "https://github.com/M-Byte480/CS4076-Project/tree/main";
+    QString link = "https://github.com/M-Byte480/CS4076-QtProject-RecipeFinder";
     QDesktopServices::openUrl(QUrl(link));
 }
 
 void MainWindow::on_searchButton_clicked()
 {
+    vector<Food> validFood;
 
-
-
+    string searchBar = ui->userInput->displayText().QString::toStdString();
+    cout << trim(searchBar) << endl;
+    searchBar = trim(searchBar);
     forward_list<Food>::iterator it;
 
-//    for(it = foodList.begin(); it != foodList.end(); it++){
-//        cout << it->getName() << endl;
-//        cout << it->getTime() << endl;
-//    }
+    for(it = foodList.begin(); it != foodList.end() ; it++){
+        if(split(it->getName(), searchBar).capacity() > 1){
+            validFood.push_back(*it);
+        }
+    }
+
+    cout << "The capacity of Validfood: " << validFood.capacity() << endl;
+
+    {
+        vector<Food>::iterator it;
+        for(it = validFood.begin(); it != validFood.end(); it++){
+            cout << it->getName() << endl;
+    //        cout << it->getTime() << endl;
+        }
+    }
+
     // Check for radio buttons
     QAbstractButton* buttons[] = {
         ui -> difficultyAny,
@@ -190,11 +204,14 @@ void MainWindow::on_searchButton_clicked()
 
     //    cout << minutes << endl;
     map<string, bool>::iterator iterator;
+
     ui -> resultList -> clear();
+
     string diff[3] = {"difficultyEasy",
                       "difficultyMedium",
                       "difficultyHard"};
-    for(Food f : foodList){
+
+    for(Food f : validFood){
         bool bad = false;
         bool timeTakes = f.getTime() <= minutes;
         string difficult = checkedDiff.toStdString();
@@ -282,5 +299,11 @@ void MainWindow::on_dropDownBox_clicked()
         cout << e.what() << endl;
         cout << file << endl;
     }
+}
+
+
+void MainWindow::on_userInput_returnPressed()
+{
+    MainWindow::on_searchButton_clicked();
 }
 

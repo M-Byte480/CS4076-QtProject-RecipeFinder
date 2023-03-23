@@ -34,6 +34,8 @@ private slots:
 
     void on_dropDownBox_clicked();
 
+    void on_userInput_returnPressed();
+
 private:
     Ui::MainWindow *ui;
 

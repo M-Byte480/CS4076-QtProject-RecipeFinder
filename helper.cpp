@@ -1,4 +1,5 @@
 #include "helper.h"
+#include <regex>
 
 vector<string> helper::split(string str, char splitter){
     vector<string> result;
@@ -14,3 +15,31 @@ vector<string> helper::split(string str, char splitter){
 
     return result;
 }
+
+vector<string> helper::split(string str, string phrase){
+    vector<string> result;
+    int start = 0, end = 0;
+    int trackStart = 0, endTrack = phrase.size();
+
+    if(endTrack > str.size()) return result;
+
+    for(int i = 0; i <= str.size(); i++){
+        cout << str.substr(trackStart, endTrack) << endl;
+
+        if(str.substr(trackStart, endTrack) == phrase || trackStart + endTrack - 1 == str.size()){
+            end = i;
+            result.push_back(str.substr(start, end - start));
+            cout << "Split: " << str.substr(start, end - start) << endl;
+            start = end + 1;
+
+        }
+        trackStart++;
+    }
+
+    return result;
+}
+
+string helper::trim(string s){
+    return std::regex_replace(std::regex_replace(s, regex(" +$"), string("")), regex("^ +"), string(""));
+}
+

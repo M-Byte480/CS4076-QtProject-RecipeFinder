@@ -5,11 +5,12 @@ QSlider ✓
 QGridLayout✓
 QBoxLayout
 
-Multiple inheritance
-Programmer defined exceptions
 Unions
 Bit structures
 Advanced pre-processor directives
+
+Multiple inheritance ✓
+Programmer defined exceptions ✓
 Operator overloading ✓
 template classes ✓
 namespaces ✓

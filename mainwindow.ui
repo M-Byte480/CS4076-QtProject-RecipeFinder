@@ -62,7 +62,7 @@ color: rgb(0, 0, 0);</string>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="appOutput"/>
+      <widget class="QLineEdit" name="userInput"/>
      </item>
      <item>
       <spacer name="horizontalSpacer">
