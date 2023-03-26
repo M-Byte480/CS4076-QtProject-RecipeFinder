@@ -4,16 +4,22 @@
 #include "filehandler.h"
 #include "myexception.h"
 
+// Multiple Inheritance
 class fileInputReader :
         public fileHandler ,
         public myException
 {
 public:
+    // Constructors
     fileInputReader();
     fileInputReader(string name);
-    virtual void readFile(string name);
     ~fileInputReader(){};
-    string getName();
+
+    // Over-written virtual function
+    virtual void readFile(string name);
+
+    // Defined virtual function
+    virtual void printName();
 };
 
 #endif // FILEINPUTREADER_H

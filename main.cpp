@@ -3,16 +3,11 @@
 #include <QLocale>
 #include <QTranslator>
 #include <QDesktopServices>
-//#include "helper.h"
-#include "food.h"
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-//    Food pizza("Pizza");
-//    pizza.toString();
-
     QApplication a(argc, argv);
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();

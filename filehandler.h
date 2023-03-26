@@ -1,26 +1,44 @@
 #ifndef FILEHANDLER_H
 #define FILEHANDLER_H
 
+#include "food.cpp"
 #include <stdlib.h>
 #include <string>
 #include <fstream>
-#include "food.cpp"
 #include <sstream>
 #include <vector>
+#include<bits/stdc++.h>
+#include <filesystem>
+#include <stdlib.h>
 
 using namespace std;
 
+/*
+ * This class will handle file inputs
+ * For the list of recipes which are used
+ * to display for the user
+ */
+
 class fileHandler{
 public:
+    // Constructors
     fileHandler();
     fileHandler(string name);
-    virtual void readFile(string name);
     ~fileHandler(){
     }
-    vector<std::string> getData();
+
+    // Overrideable functions
+    virtual void readFile(string name);
+    virtual void printName();
+
+    // Functions
+    vector<std::string> getFileLine();
     void printData();
-    string getDataToString();
+    string dataToFormattedString();
+
 protected:
+    // Inheritable instance variables
+    string name;
     int count;
     vector<std::string> data;
 };

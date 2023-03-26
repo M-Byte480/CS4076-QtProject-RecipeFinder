@@ -4,8 +4,10 @@
 
 using namespace std;
 
+// Inherits class exception
 class myException : public exception
 {
+
 public:
     myException();
     myException(char* errorMsg);
@@ -13,6 +15,7 @@ public:
     char* what();
     void setException(char* errorMsg);
     void causeException();
+
 protected:
     char* msg = (char*) "Hello World";
 };

@@ -6,9 +6,9 @@ Popup::Popup(QWidget *parent) :
     ui(new Ui::Popup)
 {
     ui->setupUi(this);
-//    displayMethod("H");
 }
 
+// This function takes in a QString from the signal of mainwindow
 void Popup::displayMethod(QString s){
     ui->textBrowser->setText(s);
 }

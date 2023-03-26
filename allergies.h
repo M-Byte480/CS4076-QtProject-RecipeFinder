@@ -1,13 +1,14 @@
 #ifndef ALLERGIES_H
 #define ALLERGIES_H
-
 #include <string>
 
 using namespace std;
 
+// Allergy class
 class Allergy
 {
 
+// Allergy's friend class Food
 friend class Food;
 
 public:
@@ -16,6 +17,7 @@ public:
     bool compareTo(const Allergy& that);
 
     string toString();
+
 private:
     string name;
 };

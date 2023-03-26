@@ -13,17 +13,90 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: 
+qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, 
+stop:0 rgba(0, 0, 0, 255), 
+stop:1 rgba(25, 25, 0, 255));
+border-color: rgb(0, 0, 0);
+color: rgb(255, 255, 255);
+font: 700 9pt &quot;Roboto&quot;;</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="gridLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>20</x>
       <y>10</y>
-      <width>771</width>
-      <height>51</height>
+      <width>961</width>
+      <height>574</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="title">
+     <item row="2" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QSlider" name="timeSlider">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>200</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>680</width>
+           <height>35</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: 
+qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, 
+stop:1 rgba(9, 70, 180, 0), 
+stop:0 rgba(97, 95, 130, 0));
+border-color: rgb(255, 255, 255);
+color: rgb(255, 255, 255);
+color: rgb(255, 0, 242);
+font: 700 9pt &quot;Roboto&quot;;</string>
+         </property>
+         <property name="maximum">
+          <number>250</number>
+         </property>
+         <property name="singleStep">
+          <number>5</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="timeDisplay">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: 
+qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, 
+stop:0 rgba(9, 70, 180, 0), 
+stop:1 rgba(97, 95, 130, 0));
+border-color: rgb(255, 255, 255);
+color: rgb(255, 255, 255);
+font: 700 9pt &quot;Roboto&quot;;</string>
+         </property>
+         <property name="text">
+          <string>No Preference</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
      <item row="0" column="0">
       <widget class="QLabel" name="milanTitle">
        <property name="minimumSize">
@@ -33,203 +106,316 @@
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(92, 239, 255);
+        <string notr="true">background-color: 
+qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, 
+stop:0 rgba(200, 200, 200, 255), 
+stop:1 rgba(100, 100, 100, 255));
 border-color: rgb(0, 0, 0);
-color: rgb(0, 0, 0);</string>
+color: rgb(0, 0, 0);
+font: 700 9pt &quot;Roboto&quot;;</string>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Milan's Recipe Finder&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:700;&quot;&gt;Milan's Recipe Finder&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>70</y>
-      <width>771</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="searchBox">
-     <item>
-      <widget class="QToolButton" name="dropDownBox">
-       <property name="text">
-        <string>Aditional Search</string>
-       </property>
-      </widget>
+     <item row="1" column="0">
+      <layout class="QHBoxLayout" name="searchBox">
+       <item>
+        <widget class="QToolButton" name="dropDownBox">
+         <property name="styleSheet">
+          <string notr="true">background-color:  rgb(140,140,140);
+border-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
+font: 700 9pt &quot;Roboto&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Open Tmp</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="userInput">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);
+border-color: rgb(0, 0, 0);</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Minimum</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>10</width>
+           <height>0</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="searchButton">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(140,140 , 140);
+border-color: rgb(0, 0, 0);
+color: rgb(0, 0, 0);
+font: 700 9pt &quot;Roboto&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Search 🔍︎</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
-     <item>
-      <widget class="QLineEdit" name="userInput"/>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Minimum</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
+     <item row="3" column="0">
+      <widget class="QListWidget" name="resultList">
+       <property name="maximumSize">
         <size>
-         <width>10</width>
-         <height>0</height>
+         <width>1000</width>
+         <height>400</height>
         </size>
        </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="searchButton">
-       <property name="text">
-        <string>Search 🔍︎</string>
+       <property name="styleSheet">
+        <string notr="true">background-color: 
+qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, 
+stop:0 rgba(111, 111, 111, 255), 
+stop:1 rgba(25, 25, 25, 255));
+border-color: rgb(255, 255, 255);
+color: rgb(255, 255, 255);
+font: 700 9pt &quot;Roboto&quot;;</string>
+       </property>
+       <property name="resizeMode">
+        <enum>QListView::Fixed</enum>
        </property>
       </widget>
+     </item>
+     <item row="0" column="1" rowspan="3">
+      <layout class="QVBoxLayout" name="difficultyCollection">
+       <item>
+        <widget class="QLabel" name="difficultyLabel">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-color: rgb(255, 255, 255);
+background-color: rgba(0 , 0 , 0 , 0);
+color: rgb(0, 255, 0);
+font: 700 9pt &quot;Roboto&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Difficulty</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="difficultyEasy">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-color: rgb(255, 255, 255);
+background-color: rgba(0 , 0 , 0 , 0);
+color: rgb(255, 255, 255);
+font: 700 9pt &quot;Roboto&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Easy</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="difficultyMedium">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-color: rgb(255, 255, 255);
+background-color: rgba(0 , 0 , 0 , 0);
+color: rgb(255, 255, 255);
+font: 700 9pt &quot;Roboto&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Medium</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="difficultyHard">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-color: rgb(255, 255, 255);
+background-color: rgba(0 , 0 , 0 , 0);
+color: rgb(255, 255, 255);
+font: 700 9pt &quot;Roboto&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Hard</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="difficultyAny">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-color: rgb(255, 255, 255);
+background-color: rgba(0 , 0 , 0 , 0);
+color: rgb(255, 255, 255);
+font: 700 9pt &quot;Roboto&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Any</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="3" column="1">
+      <layout class="QVBoxLayout" name="allergiesCollection">
+       <item>
+        <widget class="QLabel" name="allergyLabel">
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-color: rgb(255, 255, 255);
+background-color: rgba(0 , 0 , 0 , 0);
+color: rgb(255, 0, 0);
+font: 700 9pt &quot;Roboto&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Allergies</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="nuts">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>35</height>
+          </size>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-color: rgb(255, 255, 255);
+background-color: rgba(0 , 0 , 0 , 0);
+color: rgb(255, 255, 255);
+font: 700 9pt &quot;Roboto&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Nuts</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="milk">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>35</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-color: rgb(255, 255, 255);
+background-color: rgba(0 , 0 , 0 , 0);
+color: rgb(255, 255, 255);
+font: 700 9pt &quot;Roboto&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Milk</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="fish">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>35</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-color: rgb(255, 255, 255);
+background-color: rgba(0 , 0 , 0 , 0);
+color: rgb(255, 255, 255);
+font: 700 9pt &quot;Roboto&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Fish</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="wheat">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>35</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-color: rgb(255, 255, 255);
+background-color: rgba(0 , 0 , 0 , 0);
+color: rgb(255, 255, 255);
+font: 700 9pt &quot;Roboto&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Wheat</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
      </item>
     </layout>
-   </widget>
-   <widget class="QSlider" name="timeSlider">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>130</y>
-      <width>521</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(143, 143, 143);</string>
-    </property>
-    <property name="maximum">
-     <number>250</number>
-    </property>
-    <property name="singleStep">
-     <number>5</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="timeDisplay">
-    <property name="geometry">
-     <rect>
-      <x>570</x>
-      <y>120</y>
-      <width>201</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="layoutDirection">
-     <enum>Qt::LeftToRight</enum>
-    </property>
-    <property name="text">
-     <string>No Preference</string>
-    </property>
-   </widget>
-   <widget class="QWidget" name="verticalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>800</x>
-      <y>10</y>
-      <width>160</width>
-      <height>154</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="difficultyCollection">
-     <item>
-      <widget class="QLabel" name="difficultyLabel">
-       <property name="text">
-        <string>Difficulty</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="difficultyEasy">
-       <property name="text">
-        <string>Easy</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="difficultyMedium">
-       <property name="text">
-        <string>Medium</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="difficultyHard">
-       <property name="text">
-        <string>Hard</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="difficultyAny">
-       <property name="text">
-        <string>Any</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="verticalLayoutWidget_2">
-    <property name="geometry">
-     <rect>
-      <x>800</x>
-      <y>200</y>
-      <width>160</width>
-      <height>154</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="allergiesCollection">
-     <item>
-      <widget class="QLabel" name="allergyLabel">
-       <property name="text">
-        <string>Allergies</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="nuts">
-       <property name="text">
-        <string>Nuts</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="milk">
-       <property name="text">
-        <string>Milk</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="fish">
-       <property name="text">
-        <string>Fish</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="wheat">
-       <property name="text">
-        <string>Wheat</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QListWidget" name="resultList">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>160</y>
-      <width>761</width>
-      <height>401</height>
-     </rect>
-    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -238,7 +424,7 @@ color: rgb(0, 0, 0);</string>
      <x>0</x>
      <y>0</y>
      <width>992</width>
-     <height>25</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFiles">

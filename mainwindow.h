@@ -24,6 +24,8 @@ private slots:
 
     void on_actionGitHub_triggered();
 
+    void on_actionApplication_triggered();
+
     void on_searchButton_clicked();
 
     void on_timeSlider_sliderMoved(int position);
@@ -39,6 +41,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
+    // We send the data from one window to another using a signal
 signals:
     void sendMethod(QString);
 };

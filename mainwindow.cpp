@@ -9,78 +9,70 @@
 #include <string>
 #include <stdlib.h>
 #include <iostream>
+#include <QBoxLayout>
 #include "QListWidget"
 #include "popup.h"
-//#include "myexception.h"
 #include "fileinputreader.h"
 
 using namespace std;
 using namespace helper;
 
+// Global variables
 QString text;
 QAbstractButton* checkedButton;
 int minutes = 0;
 string path = "..//cs4076//recipes//";
 forward_list<Food> foodList;
 
-// create inline method here
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
-
     ui -> setupUi(this);
-//    ui -> resultList -> addItem("Test");
-    // Algint text in the labels to center
+
+//    QBoxLayout qBox(QBoxLayout::TopToBottom);
+//    qBox.addItem(ui ->milk);
+
+    // Align text in the labels to their relative center
     ui -> timeDisplay -> setAlignment(Qt::AlignCenter);
     ui -> difficultyLabel -> setAlignment(Qt::AlignCenter);
     ui -> allergyLabel -> setAlignment(Qt::AlignCenter);
 
-    // Default tick the radio button
+    // Default radio button selected
     ui -> difficultyAny -> setChecked(true);
 
-//    ui -> timeSlider ->setTickInterval(11);
-    //
-    // Pre-processing data
+    // Pre-data handling
     try{
         fileInputReader data;
         data.readFile(path + "data.data");
+        print("Now reading: "); data.printName();
 
+        // We will now iterate through the file and intilize the foods
 
-        // Initialize the foods
-        int numberOfFood;
-//        numberOfFood = data.getData().capacity() - 1;
+        int tracker = 1; // First line of the file is the file template
+        for( ; tracker <  data.getFileLine().capacity(); tracker++ ){
+            string line = data.getFileLine().at(tracker);
 
-
-//        cout << "Number of food: " << numberOfFood << endl;
-        int tracker = 1;
-        for(tracker = 1 ; tracker <  data.getData().capacity(); tracker++ ){
-            string line = data.getData().at(tracker);
-
-            string name; string fileName; int difficulty; int numberOfIngredients; int time;
+            string name; string fileName;
             string listOfIngredients; string listOfAllergies; string listOfMethods;
+            int difficulty; int numberOfIngredients; int time;
 
             vector<string> splitLine = split(line, ',');
-            //        for(string s : splitLine){
-            //            cout << s << endl;
-            //        }
-            fileName = splitLine.at(0);
+
+            fileName =  splitLine.at(0);
             name = split(fileName, '.').at(0);
-//            cout <<"Difficulty read: " << splitLine.at(1) << endl;
+
             difficulty = stoi(splitLine.at(1));
-//            cout << "Difficulty Caste; " << difficulty << endl;
-            //        cout << "Pizza Dif " << difficulty << endl;
-            time = stoi(splitLine.at(2));
+            time       = stoi(splitLine.at(2));
 
             numberOfIngredients = stoi(split(splitLine.at(3), ';').at(0));
-            listOfIngredients = split(splitLine.at(3),';').at(1);
+            listOfIngredients =        split(splitLine.at(3), ';').at(1);
 
-            listOfAllergies = split(splitLine.at(4), ';').at(1);
+            listOfAllergies =          split(splitLine.at(4), ';').at(1);
+
             fileInputReader recipe(path + fileName);
-            listOfMethods = recipe.getDataToString();
+            listOfMethods = recipe.dataToFormattedString();
 
-            //        cout << listOfMethods << endl;
             Food newFood(name,
                          difficulty,
                          numberOfIngredients,
@@ -89,12 +81,7 @@ MainWindow::MainWindow(QWidget *parent)
                          listOfAllergies,
                          listOfMethods);
 
-//            cout << "Pizza difficulty : " << newFood.getDifficulty() << endl;
-            //        newFood.setTime(time);
-            //        Food temp;
-
             foodList.push_front(newFood);
-        //        delete newFood;
         }
     }catch(myException& e){
         cout << e.what() << endl;
@@ -128,30 +115,42 @@ void MainWindow::on_actionGitHub_triggered()
     QDesktopServices::openUrl(QUrl(link));
 }
 
+void MainWindow::on_actionApplication_triggered()
+{
+    QString link = "https://www.linkedin.com/in/milan-kovacs-cs/?originalSubdomain=ie";
+    QDesktopServices::openUrl(QUrl(link));
+}
+
 void MainWindow::on_searchButton_clicked()
 {
     vector<Food> validFood;
 
-    string searchBar = ui->userInput->displayText().QString::toStdString();
-    cout << trim(searchBar) << endl;
+    string searchBar = ui -> userInput -> displayText()
+                      .QString::toStdString(); // We get the user search input
+
     searchBar = trim(searchBar);
+    // cout << searchBar << endl;
+
+
     forward_list<Food>::iterator it;
 
     for(it = foodList.begin(); it != foodList.end() ; it++){
-        if(split(it->getName(), searchBar).capacity() > 1){
+
+        if( split( it->getName() , searchBar ).capacity() > 1 ){ // My own contains
+//        if(it->getName().find(searchBar) != string::npos){ // Simplified
             validFood.push_back(*it);
         }
     }
 
-    cout << "The capacity of Validfood: " << validFood.capacity() << endl;
-
+    /* Prints out the name that is found up above
     {
+        print("The capacity of Validfood: "); println(validFood.capacity());
         vector<Food>::iterator it;
         for(it = validFood.begin(); it != validFood.end(); it++){
             cout << it->getName() << endl;
-    //        cout << it->getTime() << endl;
         }
     }
+    //*/
 
     // Check for radio buttons
     QAbstractButton* buttons[] = {
@@ -162,14 +161,13 @@ void MainWindow::on_searchButton_clicked()
     } ;
 
     QAbstractButton* checkedButton;
-
     for(int i = 0; i < 4; i++){
         if(buttons[i]->isChecked()){
             checkedButton = buttons[i];
         }
     }
 
-    QString checkedDiff = checkedButton -> objectName();
+    QString checkedDifficulty = checkedButton -> objectName();
 
     // Check for tickedBox
     QAbstractButton* buttonBox[] = {
@@ -214,7 +212,7 @@ void MainWindow::on_searchButton_clicked()
     for(Food f : validFood){
         bool bad = false;
         bool timeTakes = f.getTime() <= minutes;
-        string difficult = checkedDiff.toStdString();
+        string difficult = checkedDifficulty.toStdString();
 //        cout << "\n\n DIFFICULTY RETURNED :" << f.getDifficulty() << endl;
         bool dif = (difficult == "difficultyAny" || diff[f.getDifficulty() - 1] == difficult);
         if(timeTakes && dif){
@@ -254,7 +252,7 @@ void MainWindow::on_timeSlider_valueChanged(int value)
     //    text = "None";
     QString hour = (value / 60 >= 10) ? QString::number(value / 60) : QString::fromStdString("0") + QString::number(value / 60);
     QString min = (value % 60 >= 10) ? QString::number(value % 60) : QString::fromStdString("0") + QString::number(value % 60);
-    QString time = hour + ":" + min;
+    QString time = "<" + hour + ":" + min;
 
     text = time + " Hour";
 
@@ -294,6 +292,7 @@ void MainWindow::on_dropDownBox_clicked()
 {
     string file = "tmp";
     try{
+//        println("Looking for " + f.getName()) ; cout << endl;
         fileInputReader f(file);
     }catch(myException& e){
         cout << e.what() << endl;

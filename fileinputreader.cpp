@@ -1,5 +1,8 @@
 #include "fileinputreader.h"
 
+/* Default constructor, with
+ * Default base constructor and
+ * Char pointer of string literal */
 fileInputReader::fileInputReader() :
     fileHandler(),
     myException((char *) "File Not Found: ")
@@ -7,6 +10,8 @@ fileInputReader::fileInputReader() :
 
 }
 
+/* We take the relative path to file
+ * Check if it's found, else return exception message */
 fileInputReader::fileInputReader(string name) :
     fileHandler(name),
     myException((char*) "File Not Found: ")
@@ -16,14 +21,17 @@ fileInputReader::fileInputReader(string name) :
     }
 }
 
+// Same as 1-arg constructor, except we assign the read
+// To this instance
 void fileInputReader::readFile(string name){
 
     fileHandler::readFile(name);
-    if(this->getData().capacity() == 0){
+    if(this->getFileLine().capacity() == 0){
         causeException();
     }
 }
 
-string fileInputReader::getName(){
-    return this->getName();
+// We invoke the base class printName()
+void fileInputReader::printName(){
+    this -> fileHandler::printName();
 }

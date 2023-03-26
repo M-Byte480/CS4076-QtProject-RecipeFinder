@@ -1,28 +1,29 @@
-#include <stdlib.h>
-#include <string>
-#include <fstream>
-#include <sstream>
 #include "filehandler.h"
-#include <filesystem>
 #include "helper.h"
-#include<bits/stdc++.h>
 
 using namespace std;
 using namespace helper;
+
+// Default Constructor
 fileHandler::fileHandler(){
     vector<string> data;
 }
 
+// Takes relative file path upon construction and read it
 fileHandler::fileHandler(string name){
     vector<string> data;
-    readFile(name);
+    fileHandler::readFile(name);
+    this -> name = name;
 }
 
+// We take the file path and assign the data
+// per line, into the data vector.
 void fileHandler::readFile(string name){
+    this->name  = name;
     ifstream myFile(name);
     count = 0;
-//    vector<string> data;
-    // We count how many recipes we need
+
+    // We count how many lines are read and print it to console
     string line;
     while( getline(myFile, line) ){
         data.push_back(line);
@@ -30,25 +31,34 @@ void fileHandler::readFile(string name){
     }
     myFile.close();
 
-    println("Number of lines read: " +  to_string(count));
+    // Use print new line from helper library
+    print("Number of lines read: "); println(count);
 }
 
-std::vector<std::string> fileHandler::getData(){
+// Return copied vector of type string
+std::vector<std::string> fileHandler::getFileLine(){
     return this->data;
 }
 
+// Print to console each string line from file
 void fileHandler::printData(){
-    for(string s : data){
-        cout << s << endl;
+    for(string s : this->data){
+        println(s);
     }
 }
 
-string fileHandler::getDataToString(){
+// Return each string line as a concatenated string with the
+// formatting required for the method window.
+string fileHandler::dataToFormattedString(){
     string str;
     int temp = 0;
-    for(string s : data){
+    for(string s : this->data){
         str.append(to_string(++temp) + ") ").append(s).append("\n\n");
     }
     return str;
-//    return "Hello world";
+}
+
+// Virtual function defined
+void fileHandler::printName(){
+    println(this->name);
 }

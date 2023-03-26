@@ -9,16 +9,17 @@
 #include <vector>
 #include "helper.h"
 
+// Here we demonstrate initializer lists, memory mananagement and pointers.
+
 using namespace helper;
 using namespace std;
 
-class Food
-        : public consumable
+class Food : public consumable // Inherit from Consumable
 {
-private: // Access specifiers
+private: // Private instance variables
     int noIngredients;
     int timeToMake;
-    string* methods;
+    string* methods; // Couple of pointers
     string* ingredients;
     string* allergiesString;
     int size;
@@ -26,8 +27,7 @@ private: // Access specifiers
     Allergy* allergies;
 
 public:
-    Food(string name = "name") : consumable(name)
-    {
+    Food(string name = "name") : consumable(name) {
         noIngredients = 0;
         timeToMake = 0;
         size = 0;
@@ -39,48 +39,50 @@ public:
         *difficulty = 0;
     }
 
-    Food(   string name,
-            int diff,
-            int numberOfIngredients,
-            int timeInMinutes,
-            string listOfIngredients,
-            string listOfAllergies,
-            string listOfMethods)
-    try
-        : consumable(name),
+    Food(string name,
+         int diff,
+         int numberOfIngredients,
+         int timeInMinutes,
+         string listOfIngredients,
+         string listOfAllergies,
+         string listOfMethods)
+
+    try : consumable(name),
           timeToMake{timeInMinutes},
           noIngredients{numberOfIngredients},
           difficulty{new int()}
         {
-//        noIngredients = 0;
-//        timeToMake = 0;
+        // Allocate locations in the heap to work from
         size = 0;
         methods = new string();
         ingredients = new string();
         allergiesString = new string();
         allergies = new Allergy[size];
 
+        // Now assign the data passed as arguments
         *difficulty = diff;
         *ingredients = listOfIngredients;
         *allergiesString = listOfAllergies;
         *methods = listOfMethods;
 
+        timeToMake = timeInMinutes;
+
+        // Split the string of allergies based on comma seperation
         vector<string> temp = split(*allergiesString, ',');
         size = temp.capacity();
         allergies = new Allergy[size];
-        for (int i = 0; i < temp.capacity(); ++i) {
-            allergies[i] = Allergy(temp.at(i));
-        }
 
-        timeToMake = timeInMinutes;
+        // Populate (copy) the allergies constructed
+        for (int i = 0; i < temp.capacity(); ++i)
+            allergies[i] = Allergy(temp.at(i));
+
         }
         catch(const exception &e)
         {
-            cout << "Broken" << endl;
+            cout << "Broken : " << e.what() << endl;
         };
 
-
-
+    // Delete the memory used in the heap
     ~Food(){
         delete methods;
         delete ingredients;
@@ -89,11 +91,14 @@ public:
         delete[] allergies;
     }
 
+    // Deep-Copy constructor
     Food(const Food &that) : consumable(that){
+        // Shallow copies
         this -> noIngredients = that.noIngredients;  
         this->size = that.size;
         this->timeToMake = that.timeToMake;
 
+        // Deep copies
         ingredients = new string();
         *ingredients = *that.ingredients;
 
@@ -110,19 +115,23 @@ public:
         *allergies = *that.allergies;
     }
 
+    // Returns bool if allergy exists within the instance
+    bool contains(const Allergy toCompare){
+        for (int i = 0; i < size; ++i)
+        {
+            if( toCompare.name == (*(allergies + i)).name){ // Pointer arithmetic
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     string getName(){
         return *(this->name);
     }
 
-    bool contains(const Allergy toCompare){
-        for (int i = 0; i < size; ++i) {
-            if( toCompare.name == (*(allergies + i)).name){
-                return true;
-            }
-        }
-        return false;
-    }
-
+    // Override virtual function
     void howToConsume(){
         cout << "Eat" << endl;
     }
@@ -152,7 +161,6 @@ public:
 
     void setAlleriges(string newAllergies){
         *allergiesString = newAllergies;
-        // Set the array
     }
 
     int getDifficulty(){
@@ -162,24 +170,30 @@ public:
     int getTime(){
         return this->timeToMake;
     }
-    int getNoAllergies(){
-        return sizeof(*allergies)/sizeof(Allergy);
-    }
-    Allergy* getAllergies(){
-        return allergies;
-    }
-    string* getAllergiesString(){
-        return allergiesString;
-    }
 
     void setTime(int t){
         timeToMake = t;
     }
 
+    // Some cool arithmetics
+    int getNoAllergies(){
+        return sizeof(*allergies)/sizeof(Allergy);
+    }
+
+    Allergy* getAllergies(){
+        return allergies;
+    }
+
+    string* getAllergiesString(){
+        return allergiesString;
+    }
+
+    // Friend : Overloaded operator for output stream.
     friend ostream& operator<<( ostream& oStream, const Food &food){
         return (oStream << food.name);
     }
 
+    // Friend : String overloaded * for concatenated string of given instance.
     friend string operator* (string s, int a){
         string toReturn;
         for (int var = 0; var < a; ++var) {
@@ -189,7 +203,5 @@ public:
     }
 
 };
-
-
 
 #endif // FOOD_H

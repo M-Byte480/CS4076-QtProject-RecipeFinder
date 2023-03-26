@@ -3,12 +3,13 @@ QCheckBox ✓
 QRadioButton ✓
 QSlider ✓
 QGridLayout✓
+
 QBoxLayout
 
 Unions
 Bit structures
-Advanced pre-processor directives
 
+Advanced pre-processor directives ✓
 Multiple inheritance ✓
 Programmer defined exceptions ✓
 Operator overloading ✓

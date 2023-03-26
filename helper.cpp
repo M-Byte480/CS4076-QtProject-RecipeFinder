@@ -1,6 +1,6 @@
 #include "helper.h"
-#include <regex>
 
+// Split based on characer position in a string
 vector<string> helper::split(string str, char splitter){
     vector<string> result;
     int start = 0, end = 0;
@@ -16,6 +16,7 @@ vector<string> helper::split(string str, char splitter){
     return result;
 }
 
+// Split based on substring position in a string
 vector<string> helper::split(string str, string phrase){
     vector<string> result;
     int start = 0, end = 0;
@@ -24,12 +25,11 @@ vector<string> helper::split(string str, string phrase){
     if(endTrack > str.size()) return result;
 
     for(int i = 0; i <= str.size(); i++){
-        cout << str.substr(trackStart, endTrack) << endl;
+//        cout << str.substr(trackStart, endTrack) << endl;
 
         if(str.substr(trackStart, endTrack) == phrase || trackStart + endTrack - 1 == str.size()){
             end = i;
             result.push_back(str.substr(start, end - start));
-            cout << "Split: " << str.substr(start, end - start) << endl;
             start = end + 1;
 
         }
@@ -39,7 +39,11 @@ vector<string> helper::split(string str, string phrase){
     return result;
 }
 
+//* Trim based on repetitive string sequences
 string helper::trim(string s){
-    return std::regex_replace(std::regex_replace(s, regex(" +$"), string("")), regex("^ +"), string(""));
+    return  std::regex_replace(
+                std::regex_replace(s, regex(" +$"), string(""))
+            , regex("^ +"), string(""));
 }
+//*/
 
