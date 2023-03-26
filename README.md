@@ -1,3 +1,3 @@
-# CS4076-Project
+# CS4076 Event-Driven Programming Project
 
-This is the project... I am stil yet to figure out what I am going to be making it on...
+This project is made using the Qt application. The app contains a collection of recipes which are displayed according the preferences set by the user by interacting with the User Interface. 
