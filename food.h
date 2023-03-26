@@ -19,11 +19,11 @@ class Food : public consumable // Inherit from Consumable
 private: // Private instance variables
     int noIngredients;
     int timeToMake;
-    string* methods; // Couple of pointers
+    int size;
+    int* difficulty;// Couple of pointers
+    string* methods;
     string* ingredients;
     string* allergiesString;
-    int size;
-    int* difficulty;
     Allergy* allergies;
 
 public:
@@ -186,6 +186,17 @@ public:
 
     string* getAllergiesString(){
         return allergiesString;
+    }
+
+    // Unary operator to return formatted string of ingredients
+    string operator!(){
+        vector<string> ing = helper::split(*this->ingredients, '-');
+        string result = "Ingredients: \n";
+        for(string s : ing){
+            result.append(" - ").append(s).append("\n");
+
+        }
+        return result.append("\n");
     }
 
     // Friend : Overloaded operator for output stream.

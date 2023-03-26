@@ -28,8 +28,6 @@ private slots:
 
     void on_searchButton_clicked();
 
-    void on_timeSlider_sliderMoved(int position);
-
     void on_timeSlider_valueChanged(int value);
 
     void on_resultList_itemDoubleClicked(QListWidgetItem *item);
@@ -44,5 +42,6 @@ private:
     // We send the data from one window to another using a signal
 signals:
     void sendMethod(QString);
+    void sendTitle(QString);
 };
 #endif // MAINWINDOW_H

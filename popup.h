@@ -21,6 +21,7 @@ private:
 private slots:
     void displayMethod(QString);
     void on_exitButton_clicked();
+    void setTitle(QString);
 };
 
 #endif // POPUP_H

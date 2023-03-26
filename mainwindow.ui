@@ -138,7 +138,8 @@ font: 700 9pt &quot;Roboto&quot;;</string>
         <widget class="QLineEdit" name="userInput">
          <property name="styleSheet">
           <string notr="true">background-color: rgb(255, 255, 255);
-border-color: rgb(0, 0, 0);</string>
+border-color: rgb(0, 0, 0);
+color: rgb(0, 0, 0);</string>
          </property>
         </widget>
        </item>

@@ -22,4 +22,6 @@ private:
     string name;
 };
 
+
+
 #endif // ALLERGIES_H

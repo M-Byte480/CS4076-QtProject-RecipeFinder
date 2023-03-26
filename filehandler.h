@@ -23,12 +23,12 @@ class fileHandler{
 public:
     // Constructors
     fileHandler();
-    fileHandler(string name);
+    fileHandler(string filePath);
     ~fileHandler(){
     }
 
     // Overrideable functions
-    virtual void readFile(string name);
+    virtual void readFile(string filePath);
     virtual void printName();
 
     // Functions
@@ -38,7 +38,7 @@ public:
 
 protected:
     // Inheritable instance variables
-    string name;
+    string filePath;
     int count;
     vector<std::string> data;
 };

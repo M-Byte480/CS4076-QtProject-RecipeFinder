@@ -13,6 +13,11 @@ void Popup::displayMethod(QString s){
     ui->textBrowser->setText(s);
 }
 
+//
+void Popup::setTitle(QString s){
+    QWidget::setWindowTitle(s);
+}
+
 Popup::~Popup()
 {
     delete ui;

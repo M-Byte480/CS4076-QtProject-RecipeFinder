@@ -10,17 +10,18 @@ fileHandler::fileHandler(){
 }
 
 // Takes relative file path upon construction and read it
-fileHandler::fileHandler(string name){
+fileHandler::fileHandler(string filePath){
     vector<string> data;
-    fileHandler::readFile(name);
-    this -> name = name;
+    fileHandler::readFile(filePath);
+    this -> filePath = filePath;
 }
 
 // We take the file path and assign the data
 // per line, into the data vector.
-void fileHandler::readFile(string name){
-    this->name  = name;
-    ifstream myFile(name);
+void fileHandler::readFile(string filePath){
+    this->filePath  = filePath;
+
+    ifstream myFile(filePath);
     count = 0;
 
     // We count how many lines are read and print it to console
@@ -60,5 +61,5 @@ string fileHandler::dataToFormattedString(){
 
 // Virtual function defined
 void fileHandler::printName(){
-    println(this->name);
+    println(this->filePath);
 }

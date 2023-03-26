@@ -30,6 +30,8 @@ set(PROJECT_SOURCES
         popup.h popup.cpp popup.ui
         myexception.h myexception.cpp
         fileinputreader.h fileinputreader.cpp
+        tmp.h tmp.cpp
+        allergybitstruct.h allergybitstruct.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

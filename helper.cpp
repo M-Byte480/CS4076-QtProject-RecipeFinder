@@ -26,7 +26,6 @@ vector<string> helper::split(string str, string phrase){
 
     for(int i = 0; i <= str.size(); i++){
 //        cout << str.substr(trackStart, endTrack) << endl;
-
         if(str.substr(trackStart, endTrack) == phrase || trackStart + endTrack - 1 == str.size()){
             end = i;
             result.push_back(str.substr(start, end - start));
@@ -42,8 +41,8 @@ vector<string> helper::split(string str, string phrase){
 //* Trim based on repetitive string sequences
 string helper::trim(string s){
     return  std::regex_replace(
-                std::regex_replace(s, regex(" +$"), string(""))
-            , regex("^ +"), string(""));
+                std::regex_replace(s, regex(" +$"), string("")) // Beginning
+            , regex("^ +"), string("")); // End
 }
 //*/
 
