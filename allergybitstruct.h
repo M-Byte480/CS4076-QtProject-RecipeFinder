@@ -20,7 +20,7 @@ struct AllergyFlag{
     void setFlag(string flagStr){
         AllergyBitStruct flag;
 
-        if(flagStr == "wheat") flag = AllergyBitStruct::wheat;
+        if     (flagStr == "wheat") flag = AllergyBitStruct::wheat;
         else if(flagStr == "milk") flag = AllergyBitStruct::milk;
         else if(flagStr == "nuts") flag = AllergyBitStruct::nuts;
         else if(flagStr == "fish") flag = AllergyBitStruct::fish;
@@ -31,7 +31,7 @@ struct AllergyFlag{
     bool hasFlag(string flagStr){
         AllergyBitStruct flag;
 
-        if(flagStr == "wheat") flag = AllergyBitStruct::wheat;
+        if     (flagStr == "wheat") flag = AllergyBitStruct::wheat;
         else if(flagStr == "milk") flag = AllergyBitStruct::milk;
         else if(flagStr == "nuts") flag = AllergyBitStruct::nuts;
         else if(flagStr == "fish") flag = AllergyBitStruct::fish;

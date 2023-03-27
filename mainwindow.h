@@ -36,6 +36,22 @@ private slots:
 
     void on_userInput_returnPressed();
 
+    void on_difficultyEasy_clicked();
+
+    void on_difficultyMedium_clicked();
+
+    void on_difficultyHard_clicked();
+
+    void on_fish_stateChanged(int arg1);
+
+    void on_milk_stateChanged(int arg1);
+
+    void on_nuts_stateChanged(int arg1);
+
+    void on_wheat_stateChanged(int arg1);
+
+    void on_difficultyAny_clicked();
+
 private:
     Ui::MainWindow *ui;
 

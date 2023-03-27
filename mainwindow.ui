@@ -361,25 +361,6 @@ font: 700 9pt &quot;Roboto&quot;;</string>
         </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="fish">
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>35</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">border-color: rgb(255, 255, 255);
-background-color: rgba(0 , 0 , 0 , 0);
-color: rgb(255, 255, 255);
-font: 700 9pt &quot;Roboto&quot;;</string>
-         </property>
-         <property name="text">
-          <string>Fish</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QCheckBox" name="wheat">
          <property name="maximumSize">
           <size>
@@ -395,6 +376,25 @@ font: 700 9pt &quot;Roboto&quot;;</string>
          </property>
          <property name="text">
           <string>Wheat</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="fish">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>35</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-color: rgb(255, 255, 255);
+background-color: rgba(0 , 0 , 0 , 0);
+color: rgb(255, 255, 255);
+font: 700 9pt &quot;Roboto&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Fish</string>
          </property>
         </widget>
        </item>

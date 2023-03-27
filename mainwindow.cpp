@@ -248,6 +248,8 @@ void MainWindow::on_timeSlider_valueChanged(int value)
 
     // Global variable
     minutes = value;
+
+    MainWindow::on_searchButton_clicked();
 }
 
 // When the list item is double clicked
@@ -327,3 +329,51 @@ void MainWindow::on_actionApplication_triggered(){
     QString link = "https://www.linkedin.com/in/milan-kovacs-cs/?originalSubdomain=ie";
     QDesktopServices::openUrl(QUrl(link));
 }
+
+void MainWindow::on_difficultyEasy_clicked()
+{
+    MainWindow::on_searchButton_clicked();
+}
+
+
+void MainWindow::on_difficultyMedium_clicked()
+{
+    MainWindow::on_searchButton_clicked();
+}
+
+
+void MainWindow::on_difficultyHard_clicked()
+{
+    MainWindow::on_searchButton_clicked();
+}
+
+
+void MainWindow::on_fish_stateChanged(int arg1)
+{
+    MainWindow::on_searchButton_clicked();
+}
+
+
+void MainWindow::on_milk_stateChanged(int arg1)
+{
+    MainWindow::on_searchButton_clicked();
+}
+
+
+void MainWindow::on_nuts_stateChanged(int arg1)
+{
+    MainWindow::on_searchButton_clicked();
+}
+
+
+void MainWindow::on_wheat_stateChanged(int arg1)
+{
+    MainWindow::on_searchButton_clicked();
+}
+
+
+void MainWindow::on_difficultyAny_clicked()
+{
+    MainWindow::on_searchButton_clicked();
+}
+
