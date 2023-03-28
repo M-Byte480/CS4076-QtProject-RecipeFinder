@@ -14,6 +14,7 @@
 #include "QListWidget"
 #include "popup.h"
 #include "fileinputreader.h"
+#include "error.h"
 
 using namespace std;
 using namespace helper;
@@ -22,7 +23,7 @@ using namespace helper;
 QString text;
 QAbstractButton* checkedButton;
 int minutes = 0;
-string path = "..//cs4076//recipes//";
+string path = ".//recipes//";
 forward_list<Food> foodList;
 
 MainWindow::MainWindow(QWidget *parent)
@@ -80,11 +81,16 @@ MainWindow::MainWindow(QWidget *parent)
 
             foodList.push_front(newFood); // Copy constructor invoked
         }
+
+        MainWindow::on_searchButton_clicked();
     }catch(myException& e){
         cout << e.what() << endl;
     }catch(exception& e){
         cout << e.what() << endl;
     }
+
+
+//    println("Size of food: "); println(distance(foodList.begin(), foodList.end()));
 }
 
 
@@ -202,7 +208,8 @@ void MainWindow::on_searchButton_clicked()
         if(timeTakes && dif){
             // Return the pointer to the array
             Allergy* allergy = f.getAllergies();
-            for(int i = 0; i < f.getNoAllergies(); i++){
+            int iterations = f.getNoAllergies();
+            for(int i = 0; i < iterations; i++){
 
                 string temp = (allergy + i)->toString(); // Pointer arithmetic
 
@@ -250,6 +257,7 @@ void MainWindow::on_timeSlider_valueChanged(int value)
     minutes = value;
 
     MainWindow::on_searchButton_clicked();
+
 }
 
 // When the list item is double clicked
@@ -295,6 +303,8 @@ void MainWindow::on_dropDownBox_clicked()
     }catch(myException& e){
         cout << e.what() << endl;
         cout << file << endl;
+        error* err = new error();
+        err->exec();
     }
 }
 
@@ -376,4 +386,13 @@ void MainWindow::on_difficultyAny_clicked()
 {
     MainWindow::on_searchButton_clicked();
 }
+
+
+void MainWindow::on_userInput_textChanged(const QString &arg1)
+{
+    MainWindow::on_searchButton_clicked();
+}
+
+
+
 

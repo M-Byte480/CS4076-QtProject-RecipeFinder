@@ -52,6 +52,9 @@ private slots:
 
     void on_difficultyAny_clicked();
 
+    void on_userInput_textChanged(const QString &arg1);
+
+
 private:
     Ui::MainWindow *ui;
 

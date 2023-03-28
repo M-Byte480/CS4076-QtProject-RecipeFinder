@@ -18,7 +18,6 @@ set(PROJECT_SOURCES
         main.cpp
         mainwindow.cpp mainwindow.h mainwindow.ui
         ${TS_FILES}
-        resources.qrc
         Requirements.txt
         consumable.cpp consumable.h
         recipes.csv
@@ -32,6 +31,7 @@ set(PROJECT_SOURCES
         fileinputreader.h fileinputreader.cpp
         tmp.h tmp.cpp
         allergybitstruct.h allergybitstruct.cpp
+        error.h error.cpp error.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

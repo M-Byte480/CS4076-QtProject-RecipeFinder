@@ -1,3 +1,7 @@
 name,difficulty123,timeMinutes,NumberOf;ingredients,NumberOf;allergies
 pizza.recipe,2,80,10;800 g strong white bread flour-200 g fine ground semolina flour or strong white bread flour-1 level teaspoon fine sea salt-2 x 7 g sachets of dried yeast-1 tablespoon golden caster sugar-1 clove of garlic-1 bunch of fresh basil-olive oil-1 x 400 g tin of plum tomatoes-85 g mozzarella cheese,1;wheat
 cereal.recipe,1,3,2;milk-box of cereal,1;milk
+rice.recipe,1,30,2;rice-water,0;
+rice fish.recipe,2,45,2;milk-box of cereal,1;fish
+bread.recipe,2,120,2;wheat-yeast,1;wheat
+orange juice.recipe,1,1,1;Orange Juice,0;

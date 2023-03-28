@@ -17,7 +17,8 @@ public:
     void causeException();
 
 protected:
-    char* msg = (char*) "Hello World";
+    char* msg = (char*) "Default Message";
+
 };
 
 #endif // MYEXCEPTION_H

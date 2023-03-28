@@ -20,7 +20,7 @@ fileHandler::fileHandler(string filePath){
 // per line, into the data vector.
 void fileHandler::readFile(string filePath){
     this->filePath  = filePath;
-
+    println(filePath);
     ifstream myFile(filePath);
     count = 0;
 

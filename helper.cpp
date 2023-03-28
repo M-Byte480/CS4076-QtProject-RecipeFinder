@@ -1,7 +1,9 @@
 #include "helper.h"
 
+
+
 // Split based on characer position in a string
-vector<string> helper::split(string str, char splitter){
+vector<string> helper::split(const string &str, char splitter){
     vector<string> result;
     int start = 0, end = 0;
 
@@ -17,7 +19,7 @@ vector<string> helper::split(string str, char splitter){
 }
 
 // Split based on substring position in a string
-vector<string> helper::split(string str, string phrase){
+vector<string> helper::split(const string &str, string phrase){
     vector<string> result;
     int start = 0, end = 0;
     int trackStart = 0, endTrack = phrase.size();

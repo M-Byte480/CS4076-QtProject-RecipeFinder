@@ -6,9 +6,7 @@
 fileInputReader::fileInputReader() :
     fileHandler(),
     myException((char *) "File Not Found: ")
-{
-
-}
+{}
 
 /* We take the relative path to file
  * Check if it's found, else return exception message */

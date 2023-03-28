@@ -94,7 +94,7 @@ public:
     // Deep-Copy constructor
     Food(const Food &that) : consumable(that){
         // Shallow copies
-        this -> noIngredients = that.noIngredients;  
+        this -> noIngredients = that.noIngredients;
         this->size = that.size;
         this->timeToMake = that.timeToMake;
 
@@ -177,7 +177,7 @@ public:
 
     // Some cool arithmetics
     int getNoAllergies(){
-        return sizeof(*allergies)/sizeof(Allergy);
+        return size;
     }
 
     Allergy* getAllergies(){

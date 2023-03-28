@@ -430,15 +430,14 @@ font: 700 9pt &quot;Roboto&quot;;</string>
    </property>
    <widget class="QMenu" name="menuFiles">
     <property name="title">
-     <string>Files</string>
+     <string>&amp;Files</string>
     </property>
     <addaction name="actionQuit"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
-     <string>About</string>
+     <string>&amp;About</string>
     </property>
-    <addaction name="actionApplication"/>
     <addaction name="separator"/>
     <addaction name="actionLinkedIn"/>
     <addaction name="actionGitHub"/>
@@ -461,17 +460,17 @@ font: 700 9pt &quot;Roboto&quot;;</string>
   </action>
   <action name="actionApplication">
    <property name="text">
-    <string>Application</string>
+    <string>&amp;Application</string>
    </property>
   </action>
   <action name="actionLinkedIn">
    <property name="text">
-    <string>LinkedIn</string>
+    <string>&amp;LinkedIn</string>
    </property>
   </action>
   <action name="actionGitHub">
    <property name="text">
-    <string>GitHub</string>
+    <string>&amp;GitHub</string>
    </property>
   </action>
  </widget>

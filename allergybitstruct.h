@@ -7,6 +7,17 @@
 #include <string>
 using namespace std;
 
+union AllergyBit{
+    struct{
+        unsigned int wheat : 1;
+        unsigned int milk : 1;
+        unsigned int fish : 1;
+        unsigned int nuts : 1;
+    };
+    unsigned int x;
+    char z;
+};
+
 enum class AllergyBitStruct{
     wheat = 1 << 0,
     milk  = 1 << 1,
@@ -24,6 +35,7 @@ struct AllergyFlag{
         else if(flagStr == "milk") flag = AllergyBitStruct::milk;
         else if(flagStr == "nuts") flag = AllergyBitStruct::nuts;
         else if(flagStr == "fish") flag = AllergyBitStruct::fish;
+        else{ return ; }
 
         flagValues |= (int) flag;
     }
@@ -35,6 +47,7 @@ struct AllergyFlag{
         else if(flagStr == "milk") flag = AllergyBitStruct::milk;
         else if(flagStr == "nuts") flag = AllergyBitStruct::nuts;
         else if(flagStr == "fish") flag = AllergyBitStruct::fish;
+        else{ return false; }
 
         return ((flagValues & (int) flag) == (int) flag);
     }
