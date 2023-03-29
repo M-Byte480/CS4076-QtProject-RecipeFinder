@@ -23,6 +23,7 @@ using namespace helper;
 QString text;
 QAbstractButton* checkedButton;
 int minutes = 0;
+//string path = "..//cs4076//recipes//";
 string path = ".//recipes//";
 forward_list<Food> foodList;
 

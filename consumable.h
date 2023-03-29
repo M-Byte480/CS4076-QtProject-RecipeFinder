@@ -21,6 +21,9 @@ public:
         name = new string();
         *(this -> name) = *(that.name);
     }
+    ~consumable(){
+        delete name;
+    }
 
     // Abstract functions
     virtual void howToConsume() = 0;
